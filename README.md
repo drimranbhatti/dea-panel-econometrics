@@ -5,7 +5,7 @@ A tested Python toolkit for **efficiency and productivity analysis**: **Data Env
 ![OIC efficiency ranking](images/oic_efficiency_ranking.png)
 
 ## Why this toolkit
-It packages the methodology of my PhD research in finance (IIUM) on firm-level efficiency in OIC countries. There, DEA scores built from working-capital inputs (receivable, inventory and payable days) are related to performance and firm characteristics. The original research used licensed **Compustat Global** data, which cannot be redistributed, so this repository demonstrates the same pipeline on **public country-level data**. Point the same functions at firm-level data to reproduce a firm-level study.
+It packages the methodology of my PhD research in finance (IIUM) on firm-level efficiency in OIC countries. There, DEA scores built from working-capital inputs (receivable, inventory and payable days) are related to performance and firm characteristics. The original research used licensed **Compustat Global** data, which cannot be redistributed, so this repository demonstrates the same pipeline on **public country-level data** and on a **simulated firm-level panel** that mirrors the Compustat design (`effpanel.synthetic`, notebook 04). Point the same functions at firm-level data to reproduce a firm-level study.
 
 ## What's inside
 
@@ -22,6 +22,8 @@ It packages the methodology of my PhD research in finance (IIUM) on firm-level e
 | [01 · DEA efficiency](notebooks/01_dea_efficiency_oic.ipynb) | Each country scored against a world frontier of 144 economies; rankings, benchmark peers and trends for Pakistan, Indonesia, Malaysia, Turkey, Egypt, Bangladesh, Nigeria and Saudi Arabia |
 | [02 · Malmquist productivity](notebooks/02_malmquist_productivity.ipynb) | The world frontier shows technical *regress* after 2008; OIC economies caught up (+1.4%/yr) but more slowly than others (+2.0%/yr), so net TFP is about −0.3%/yr |
 | [03 · Panel second stage](notebooks/03_panel_second_stage.ipynb) | Country effects matter (BP-LM); robust Hausman favours RE (p ≈ 0.06); **human capital** is the most robust positive correlate of efficiency |
+| [04 · Firm panel: trade credit & intangibles](notebooks/04_trade_credit_firm_panel.ipynb) | The PhD firm-level design (Compustat Global, 24 OIC countries) run on a **simulated panel with known coefficients**: in-year winsorising and firm FE recover the planted effect, while pooled OLS overstates it about 4× and the robust Hausman test rejects RE. The WRDS extraction script for the real (licensed) data is included |
+| [05 · Panel models explained](notebooks/05_panel_models_explained.ipynb) | Pooled, between, FE, RE, first differences and mixed models on public panels: the union wage premium drops from 31% (between) to 8% (FE); training grants add about 34 hours per employee |
 
 <p float="left">
   <img src="images/malmquist_by_year.png" width="56%" />
@@ -34,7 +36,7 @@ It packages the methodology of my PhD research in finance (IIUM) on firm-level e
 git clone https://github.com/drimranbhatti/dea-panel-econometrics.git
 cd dea-panel-econometrics
 pip install -e ".[notebooks,dev]"
-pytest                  # 6 tests
+pytest                  # 7 tests
 jupyter lab notebooks/
 ```
 
